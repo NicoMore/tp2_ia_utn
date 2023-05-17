@@ -1,4 +1,5 @@
 import pygad as pg
+import platos
 
 # Por ahora copypaste de lo que dice PyGad
 # Posiblemente haya que meterlo en un __init__
@@ -7,11 +8,11 @@ num_parents_mating = 4
 
 fitness_function = fitness_func
 
-sol_per_pop = 8
-num_genes = len(function_inputs)
+sol_per_pop = 8 # No hace falta si initial_population
+num_genes = len(function_inputs) # No hace falta si initial_population
 
-init_range_low = -2
-init_range_high = 5
+init_range_low = -2 # No hace falta si initial_population
+init_range_high = 5 # No hace falta si initial_population
 
 parent_selection_type = "sss"
 keep_parents = 1
@@ -20,6 +21,21 @@ crossover_type = "single_point"
 
 mutation_type = "random"
 mutation_percent_genes = 10
+
+# Definido por mi (Nico)
+
+# No esta claro si es superior definirla o no, pero tal vez es interesante ver una especie de "progreso" a la solucion
+initial_population = [
+                    [milanesa, papas_fritas, agua],
+                    [ensalada, arroz, bebida_cola],
+                    [bife, pan, jugo]
+                    ]
+
+# Dice que aguanta listas, no se si listas de listas. Sublista representa gen
+gene_type = [[int, int, int, int, int, int, int], [int, int, int, int], [int, int, int]]
+
+# Limita los genes a los que definimos adentro, idem comentario arriba
+gene_space = [[milanesa, ensalada, bife, pechuga_de_pollo, hamburguesa], [pure_de_papa, ensalada_side, papas_fritas, arroz, pan], [agua, bebida_cola, bebida_cola_sin_azucar, jugo, bebida_energetica]]
 
 # Otro burdo copypaste
 ga_instance = pg.GA(num_generations=num_generations,

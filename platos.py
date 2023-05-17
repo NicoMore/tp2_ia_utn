@@ -20,7 +20,7 @@ hamburguesa      = [1,1, 0,1,1,1,1]
 # 4 bits
 
 pure_de_papa = [0,1, 1,0]
-ensalada     = [0,0, 0,0]
+ensalada_side     = [0,0, 0,0]
 papas_fritas = [1,1, 1,1]
 arroz        = [0,1, 0,0]
 pan          = [0,1, 0,1]
