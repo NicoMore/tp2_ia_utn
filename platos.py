@@ -29,7 +29,7 @@ pan          = [0,1, 0,1]
 # 4 bits
 
 agua                   = [0,0, 0,1]
-bebida_cola            = [0,0, 1,1]
-bebida_cola_sin_azucar = [1,1, 1,0]
+bebida_cola            = [1,1, 1,1]
+bebida_cola_sin_azucar = [0,0, 1,0]
 jugo                   = [0,1, 1,0]
 bebida_energetica      = [1,1, 0,1]
