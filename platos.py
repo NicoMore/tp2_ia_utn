@@ -16,8 +16,11 @@ milanesa         = 91010111
 ensalada         = 90000111
 bife             = 90101010
 pechuga_de_pollo = 90001011
-hamburguesa      = 91101110
-
+hamburguesa      = 91110101
+fideos           = 90110000
+tacos            = 91010100
+empanadas        = 91001100
+pizza            = 91111000
 
 # Acompañamiento
 # 4 bits
@@ -27,15 +30,19 @@ ensalada_side = 90000
 papas_fritas  = 91111
 arroz         = 90100
 pan           = 90101
+vegetales     = 90001
 
 # Bebida
 # 4 bits
 
 agua                   = 90001
-bebida_cola            = 91111
+bebida_cola            = 91110
 bebida_cola_sin_azucar = 90010
 jugo                   = 90110
 bebida_energetica      = 91101
+te                     = 90001
+vino                   = 90110
+cerveza                = 91111
 
 principales = [milanesa, ensalada, bife, pechuga_de_pollo, hamburguesa]
 acomps = [pure_de_papa, ensalada_side, papas_fritas, arroz, pan]

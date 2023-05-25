@@ -3,23 +3,23 @@ from platos import *
 
 def switch_calos(calorias) -> int:
 
-    if calorias == [1,1]:
+    if calorias == [1, 1]:
         return 0
     else:
-        if calorias == [1,0]:
+        if calorias == [1, 0]:
             return 34
         else:
-             if calorias == [0,1]:
+             if calorias == [0, 1]:
                 return 67
              else:
-                 if calorias == [0,0]:
+                 if calorias == [0, 0]:
                      return 100
 
     return -100
 def caloria_calculator(principal, acomp, bebida) -> int:
-    calos_principal = principal[:1]
-    calos_acomp = acomp[:1]
-    calos_bebida = bebida[:1]
+    calos_principal = principal[:2]
+    calos_acomp = acomp[:2]
+    calos_bebida = bebida[:2]
 
     return round((switch_calos(calos_principal) + switch_calos(calos_acomp) + switch_calos(calos_bebida)) / 3) # Tope de 100
 
@@ -76,9 +76,9 @@ def main():
         [bife, pan, jugo]
     ]
 
-    gene_space = [[milanesa, ensalada, bife, pechuga_de_pollo, hamburguesa],
-                  [pure_de_papa, ensalada_side, papas_fritas, arroz, pan],
-                  [agua, bebida_cola, bebida_cola_sin_azucar, jugo, bebida_energetica]]
+    gene_space = [[milanesa, ensalada, bife, pechuga_de_pollo, hamburguesa, fideos, tacos, empanadas, pizza],
+                  [pure_de_papa, ensalada_side, papas_fritas, arroz, pan, vegetales],
+                  [agua, bebida_cola, bebida_cola_sin_azucar, jugo, bebida_energetica, te, vino, cerveza]]
 
     # Creo clase de Pygad con parametros
     ga_instance = pg.GA(num_generations=num_generations,
