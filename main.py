@@ -1,6 +1,7 @@
 import pygad
 import numpy as np
 from helper import *
+from comidas import *
 
 # Las combinaciones de platos que "no tienen sentido", son penalizados
 # plato-ppal
@@ -23,6 +24,11 @@ from helper import *
 # xx00 => gusto (G) => (0-3) + 4 * C
 # (C * factorC + G * factorG) * 24
 
+def pincipalDishCombineWithSecondDish(principal,secondary):    
+    if acompañamientos.get(tuple(secondary)) not in platosPrincipales.get(tuple(principal))[1]:
+        return 30
+    return 0
+
 def fitness_function(inst,solution, solution_idx):
     plato_ppal,f_plato_ppal = [solution[:7], 0.5]
     acomp,f_acom = [solution[7:11], 0.25]
@@ -37,13 +43,13 @@ def fitness_function(inst,solution, solution_idx):
     f_acom_cal = 0.5
     score_acom = get_score_bebida_acom(acomp,f_acom_cal)
 
-    return score_plato_ppal * f_plato_ppal + score_beb * f_beb  + score_acom * f_acom
+    return score_plato_ppal * f_plato_ppal + score_beb * f_beb  + score_acom * f_acom - pincipalDishCombineWithSecondDish(plato_ppal,acomp)
 
 
 # Create the GA instance
 ga_instance = pygad.GA(num_generations=300,
                        num_parents_mating=4,
-                       sol_per_pop=300,
+                       sol_per_pop=30,
                        num_genes=15,
                        mutation_percent_genes=20,
                        mutation_type="random",
@@ -54,4 +60,5 @@ ga_instance = pygad.GA(num_generations=300,
 
 
 ga_instance.run()
-print(ga_instance.best_solution())
+resultado = "Plato pricipal: %s, Garnición: %s, Bebida: %s " % (platosPrincipales.get(tuple(ga_instance.best_solution()[0][:7])[0]), acompañamientos.get(tuple(ga_instance.best_solution()[0][7:11])), bebidas.get(tuple(ga_instance.best_solution()[0][11:])))
+print(resultado)
