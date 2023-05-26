@@ -32,7 +32,7 @@ def gusto_calculator(principal, acomp, bebida) -> int:
     gusto_a = int("".join(str(i) for i in gusto_acomp), 2)
     gusto_b = int("".join(str(i) for i in gusto_bebida), 2)
 
-    return round((gusto_p + gusto_a + gusto_b) * 3 * 100 / 111)
+    return round((gusto_p + gusto_a + gusto_b) * 100 / 37)
 
 # Donde solution es el plato, requiere ese nombre x Pygad
 def fitness_func(ga_instance, solution, solution_idx):
@@ -55,19 +55,24 @@ def fitness_func(ga_instance, solution, solution_idx):
     acomp_lista = [int(num) for num in acomp_s.split()]
     bebida_lista = [int(num) for num in bebida_s.split()]
 
-    return round((caloria_calculator(principal_lista, acomp_lista, bebida_lista) + gusto_calculator(principal_lista, acomp_lista, bebida_lista)) / 2)
+    penalizacion = 0
+    if principal in combinacionesPlatoprincipalAcompañamiento.keys() and acomp not in combinacionesPlatoprincipalAcompañamiento[principal] :   
+        penalizacion = 30
+
+    print(penalizacion,principal)
+    return round((caloria_calculator(principal_lista, acomp_lista, bebida_lista) + gusto_calculator(principal_lista, acomp_lista, bebida_lista)) / 2 - penalizacion)  
 
 def main():
-    num_generations = 50
+    num_generations = 300
     num_parents_mating = 3
 
-    parent_selection_type = "sss"
-    keep_parents = 1
+    parent_selection_type = "rank"
+    keep_parents = 0
 
-    crossover_type = "single_point"
+    crossover_type = "two_points"
 
     mutation_type = "random"
-    mutation_num_genes = 2
+    # mutation_num_genes = 2
 
     # Poblacion inicial para limitar genes
     initial_population = [
@@ -88,13 +93,16 @@ def main():
                        keep_parents=keep_parents,
                        crossover_type=crossover_type,
                        mutation_type= mutation_type,
-                       mutation_num_genes=mutation_num_genes,
+                       #mutation_num_genes=mutation_num_genes,
+                       mutation_probability=0.3,
+                       #mutation_percent_genes=[1,2],
                        initial_population=initial_population,
                        gene_space = gene_space)
 
     ga_instance.run()
 
     print(ga_instance.best_solution())
+    ga_instance.plot_fitness(plot_type="plot")
 
 if __name__=="__main__":
     main()

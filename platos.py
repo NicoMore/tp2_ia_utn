@@ -12,15 +12,22 @@
 # Plato principal
 # 7 bits
 
-milanesa         = 91010111
-ensalada         = 90000111
-bife             = 90101010
-pechuga_de_pollo = 90001011
-hamburguesa      = 91110101
-fideos           = 90110000
-tacos            = 91010100
-empanadas        = 91001100
-pizza            = 91111000
+milanesa             = 91010111
+ensalada             = 90000111
+bife                 = 90101010
+pechuga_de_pollo     = 90001011
+hamburguesa          = 91110101
+fideos               = 90110000
+tacos                = 91010100
+empanadas            = 91001100
+pizza                = 91111000
+salmon_grille        = 90111111
+filet_de_merluza     = 90010001
+bondiola_a_la_mostaza= 91110101
+conejo_hervido       = 90000000
+guiso                = 91011010
+
+
 
 # Acompañamiento
 # 4 bits
@@ -44,6 +51,23 @@ te                     = 90001
 vino                   = 90110
 cerveza                = 91111
 
-principales = [milanesa, ensalada, bife, pechuga_de_pollo, hamburguesa]
+principales = [milanesa, ensalada, bife, pechuga_de_pollo, hamburguesa, salmon_grille, filet_de_merluza, bondiola_a_la_mostaza, conejo_hervido, guiso]
 acomps = [pure_de_papa, ensalada_side, papas_fritas, arroz, pan]
 bebidas = [agua, bebida_cola, bebida_cola_sin_azucar, jugo, bebida_energetica]
+
+combinacionesPlatoprincipalAcompañamiento = {
+    milanesa:[pure_de_papa,papas_fritas],
+    ensalada:[ensalada_side, pan], 
+    bife:[ensalada_side,papas_fritas,pure_de_papa,arroz], 
+    pechuga_de_pollo:[ensalada_side,arroz], 
+    hamburguesa:[papas_fritas], 
+    fideos:[],
+    tacos:[],
+    empanadas:[],
+    pizza:[],
+    salmon_grille:[ensalada_side,arroz], 
+    filet_de_merluza:[pure_de_papa], 
+    bondiola_a_la_mostaza:[pan], 
+    conejo_hervido:[arroz,pure_de_papa], 
+    guiso:[pan],
+}
