@@ -54,11 +54,13 @@ ga_instance = pygad.GA(num_generations=300,
                        mutation_percent_genes=20,
                        mutation_type="random",
                        crossover_type="two_points",
-                       parent_selection_type="sss",
+                       parent_selection_type="rws",
                        fitness_func=fitness_function,
                        gene_space=[0,1])
 
 
 ga_instance.run()
-resultado = "Plato pricipal: %s, Garnición: %s, Bebida: %s " % (platosPrincipales.get(tuple(ga_instance.best_solution()[0][:7])[0]), acompañamientos.get(tuple(ga_instance.best_solution()[0][7:11])), bebidas.get(tuple(ga_instance.best_solution()[0][11:])))
+resultado = "Plato pricipal: %s, Garnición: %s, Bebida: %s " % (platosPrincipales.get(tuple(ga_instance.best_solution()[0][:7]))[0], acompañamientos.get(tuple(ga_instance.best_solution()[0][7:11])), bebidas.get(tuple(ga_instance.best_solution()[0][11:])))
 print(resultado)
+
+ga_instance.plot_fitness(plot_type="plot")
