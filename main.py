@@ -59,7 +59,7 @@ def fitness_func(ga_instance, solution, solution_idx):
     if principal in combinacionesPlatoprincipalAcompañamiento.keys() and acomp not in combinacionesPlatoprincipalAcompañamiento[principal] :   
         penalizacion = 30
 
-    print(penalizacion,principal)
+   
     return round((caloria_calculator(principal_lista, acomp_lista, bebida_lista) + gusto_calculator(principal_lista, acomp_lista, bebida_lista)) / 2 - penalizacion)  
 
 def main():
